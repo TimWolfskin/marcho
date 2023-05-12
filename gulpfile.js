@@ -3,7 +3,8 @@ const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const autoprefixer = require("gulp-autoprefixer");
 const uglify = require("gulp-uglify");
-const del = require("del");
+const imagemin = require("gulp-imagemin")
+//const del = require("del");
 const browserSync = require("browser-sync").create();
 
 function browsersync() {
@@ -38,14 +39,16 @@ function scripts() {
 function images() {
   return src("app/images/**/*.*")
     .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 75, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
-        imagemin.svgo({
-          plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
-        }),
-      ])
+      imagemin(
+        [
+          imagemin.gifsicle({ interlaced: true }),
+          imagemin.mozjpeg({ quality: 75, progressive: true }),
+          imagemin.optipng({ optimizationLevel: 5 }),
+          imagemin.svgo({
+            plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+          }),
+        ]
+      )
     )
     .pipe(dest("dist/images"));
 }
@@ -56,9 +59,9 @@ function build() {
   }).pipe(dest("dist"));
 }
 
-function cleanDist() {
-  return del("dist");
-}
+// function cleanDist() {
+//   return del("dist");
+// }
 
 function watching() {
   watch(["app/scss/**/*.scss"], styles);
@@ -72,7 +75,7 @@ exports.browsersync = browsersync;
 exports.watching = watching;
 exports.images = images;
 exports.build = build;
-exports.cleanDist = cleanDist;
-exports.build = series(cleanDist, images, build)
+//exports.cleanDist = cleanDist;   cleanDist
+exports.build = series(images, build)
 
 exports.default = parallel(styles, scripts, browsersync, watching);
