@@ -1204,6 +1204,55 @@ a {
   margin: 0 auto 55px;
 }
 
+.breadcrumbs {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 25px;
+  position: relative;
+}
+.breadcrumbs::before {
+  content: "";
+  position: absolute;
+  background-image: url("../images/icons/bread-home.svg");
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 4px;
+}
+.breadcrumbs__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.breadcrumbs__item {
+  color: #727272;
+  padding-right: 40px;
+  position: relative;
+}
+.breadcrumbs__item::after {
+  content: "";
+  position: absolute;
+  background-image: url("../images/icons/breadcrumbs-arrow.svg");
+  width: 9px;
+  height: 10px;
+  right: 15px;
+  top: 9px;
+}
+.breadcrumbs__item:last-child {
+  color: #fe3e57;
+  padding-right: 0;
+}
+.breadcrumbs__item:last-child::after {
+  display: none;
+}
+.breadcrumbs__link {
+  color: inherit;
+}
+
 .header {
   padding: 40px 0;
 }
@@ -1385,6 +1434,16 @@ a {
   display: inline;
   margin-left: 25px;
   vertical-align: middle;
+}
+
+.top__container {
+  max-width: 1700px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  padding: 120px 0 130px;
+  text-align: center;
 }
 
 .top-slider {
