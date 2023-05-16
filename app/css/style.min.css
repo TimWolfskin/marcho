@@ -2020,3 +2020,6 @@ a {
   color: #fe3e57;
   display: inline-block;
 }
+.modal__text {
+  margin-bottom: 25px;
+}
