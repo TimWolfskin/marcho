@@ -1,4 +1,12 @@
 $(function () {
+  $('.product-tabs__top-item').on('click', function(e){
+    e.preventDefault()
+    $('.product-tabs__top-item').removeClass('product-tabs__top-item--active')
+    $(this).addClass('product-tabs__top-item')
+
+    $('.product-tabs__content-item').removeClass('product-tabs__content-item--active')
+    $($(this).attr('href')).addClass('product-tabs__content-item--active')
+  })
   $(".product-slide__thumb").slick({
     asNavFor: ".product-slide__big",
     focusOnSelect: true,
