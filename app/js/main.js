@@ -3,6 +3,10 @@ $(function () {
     $(".menu__list").toggleClass("menu__list--active");
   });
 
+  $(".shop__filter-btn").on("click", function () {
+    $(".shop__filters").slideToggle();
+  });
+
   $(".blog-page__slider").slick({
     prevArrow:
       '<button type="button" class="slick-prev"><svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.63388 0.616117C10.122 1.10427 10.122 1.89573 9.63388 2.38388L3.01777 9L9.63388 15.6161C10.122 16.1043 10.122 16.8957 9.63388 17.3839C9.14573 17.872 8.35427 17.872 7.86612 17.3839L0.366117 9.88388C-0.122039 9.39573 -0.122039 8.60427 0.366117 8.11612L7.86612 0.616117C8.35427 0.127961 9.14573 0.127961 9.63388 0.616117Z" fill="#828282"/>   </svg> </button>',
@@ -32,6 +36,15 @@ $(function () {
     asNavFor: ".product-slide__thumb",
     draggable: false,
     arrows: false,
+    fade: true,
+    responsive: [
+      {
+        breakpoint: 1051,
+        settings: {
+          draggable: true
+        }
+      }
+    ]
   });
 
   $(".shop-content__filter-btn").on("click", function () {
@@ -43,10 +56,12 @@ $(function () {
 
   $(".button-list").on("click", function () {
     $(".product-item").addClass("product-item--list");
+    $(".shop-content__inner").addClass("shop-content__nogrid");
   });
 
   $(".button-grid").on("click", function () {
     $(".product-item").removeClass("product-item--list");
+    $(".shop-content__inner").removeClass("shop-content__nogrid");
   });
 
   $(".select-style, .product-one__item-num").styler();
